@@ -7,12 +7,12 @@ import java.time.format.DateTimeFormatter;
 
 public class DateUtil {
 
-    public static LocalDateTime string2LocalDateTime(String value) throws Exception {
+    public static LocalDateTime string2LocalDateTime(String value, String pattern) throws Exception {
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'").withZone(ZoneId.of("UTC"));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern).withZone(ZoneId.of("UTC"));
             return LocalDateTime.parse(value, formatter);
         }catch(Exception ex){
-            throw new Exception("Date format pattern is not recognized, use this pattern `yyyy-MM-dd'T'HH:mm:ss'Z'`");
+            throw new Exception(ex.getMessage());
         }
     }
 }
