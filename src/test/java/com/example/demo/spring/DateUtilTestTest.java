@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.spring;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterAll;
@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTimeout;
 @SpringBootTest
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
-class DateUtilTest {
+class DateUtilTestTest {
 
     /*There is a school of thought that says that every test
     / function in a JUnit test should hava one and only one assert statemente ...
@@ -110,10 +110,5 @@ class DateUtilTest {
                             .isBefore(LocalDateTime.MAX)
             );
         }
-
     }
-
-
-
-
 }
