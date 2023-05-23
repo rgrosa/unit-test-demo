@@ -46,13 +46,17 @@ public class DateUtilTest {
     @Test
     @DisplayName("shouldReturnLocalDateTimeNotNull")
     public void shouldReturnLocalDateTimeNotNull() throws Exception {
+        //GIVEN
         String value = "2023-01-01T00:00:00Z";
         String pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
 
+        //WHEN
         LocalDateTime date = this.dateUtil.string2LocalDateTime(
                 value,
                 pattern
         );
+
+        //THEN
         Assert.assertTrue(date != null);
     }
 
@@ -60,27 +64,34 @@ public class DateUtilTest {
     @Test
     @DisplayName("shouldReturnLocalDateTime")
     public void shouldReturnLocalDateTime() throws Exception {
+        //GIVEN
         String value = "2023-01-01T00:00:00Z";
         String pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
 
+        //WHEN
         LocalDateTime date = this.dateUtil.string2LocalDateTime(
                 value,
                 pattern
         );
+
+        //THEN
         Assert.assertFalse(date == null);
     }
 
     @Test
     @DisplayName("testLimitsOfObject")
     public void testLimitsOfObject() throws Exception {
+        //GIVEN
         String value = "2023-01-01T00:00:00Z";
         String pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
 
+        //WHEN
         LocalDateTime date = this.dateUtil.string2LocalDateTime(
                 value,
                 pattern
         );
 
+        //THEN
         Assertions.assertAll(
                 () -> Assert.assertTrue(date.isBefore(LocalDateTime.MAX)),
                 () -> Assert.assertTrue(date.isAfter(LocalDateTime.MIN))
