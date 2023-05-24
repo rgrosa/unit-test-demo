@@ -5,8 +5,10 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -147,5 +149,30 @@ public class DateUtilTest {
                             .isBefore(LocalDateTime.MAX)
             );
         }
+    }
+
+    @RepeatedTest(10)
+    @DisplayName("testMethodSpeed")
+    void repeatTestXTimes() {
+        String value = "2023-01-01T00:00:00Z";
+        String pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+
+        assertTimeout(Duration.ofMillis(10l),
+                () -> this.dateUtil.string2LocalDateTime(value, pattern)
+                        .isBefore(LocalDateTime.MAX)
+        );
+    }
+
+    @Disabled
+    @RepeatedTest(10000)
+    @DisplayName("testMethodSpeed")
+    void repeatTestMillionTimes() {
+        String value = "2023-01-01T00:00:00Z";
+        String pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+
+        assertTimeout(Duration.ofMillis(10l),
+                () -> this.dateUtil.string2LocalDateTime(value, pattern)
+                        .isBefore(LocalDateTime.MAX)
+        );
     }
 }
