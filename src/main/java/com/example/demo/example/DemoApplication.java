@@ -43,9 +43,7 @@ public class DemoApplication {
                     }
                     break;
                 case "4":
-                    if(caseEmail(scanner, userList)){
-                        System.out.println("email sent");
-                    }
+                        System.out.println(caseEmail(scanner, userList));
                     break;
                 default:
             }
@@ -83,18 +81,13 @@ public class DemoApplication {
         return returnValue;
     }
 
-    private static boolean caseEmail(Scanner scanner, UserList userList){
-        boolean returnValue = false;
-        try {
+    private static String caseEmail(Scanner scanner, UserList userList){
+
             System.out.println("Digite o nome do usuario");
             String name = scanner.nextLine();
             System.out.println("Digite a mensagem");
             String message = scanner.nextLine();
-            returnValue = userList.sendEmail(message, name);
-        }catch (NoSuchElementException ex){
-            System.out.println("No user found");
-        }
-        return returnValue;
+        return userList.sendEmail(message, name);
     }
 }
 

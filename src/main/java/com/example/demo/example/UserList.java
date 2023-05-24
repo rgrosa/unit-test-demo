@@ -10,9 +10,11 @@ import java.util.regex.Pattern;
 public class UserList {
 
     List<User> userList;
+    EmailService emailService;
 
     public UserList() {
         this.userList = new ArrayList<>();
+        this.emailService = new EmailService();
     }
 
     //CREATE USER
@@ -40,16 +42,16 @@ public class UserList {
     }
 
     //Send email
-    public boolean sendEmail(String message, String name){
-        EmailService emailService = new EmailService();
-        User userObject = getUserByName(name);
-        boolean isEmailSend = emailService.sendEmail(message, userObject);
+    public String sendEmail(String message, String name) {
+        try{
+        boolean isEmailSend = emailService.sendEmail(message, name);
         if(isEmailSend){
-            System.out.println("Email sent");
-         return true;
+            return "Email sent";
         }
-            System.out.println("Email not sent");
-        return false;
+            return "Email not sent";
+        }catch (RuntimeException ex){
+            return "error sending email";
+        }
     }
 
     //Get user name

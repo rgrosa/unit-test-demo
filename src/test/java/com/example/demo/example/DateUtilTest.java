@@ -27,7 +27,6 @@ public class DateUtilTest {
     / also test's should be single concept per function
     */
 
-
     DateUtil dateUtil;
 
     @BeforeAll
